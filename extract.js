@@ -1,5 +1,7 @@
 "use strict";
 
+const STRAPI_URL = "http://localhost:1337";
+
 const fs = require("fs");
 const _ = require("underscore");
 const centroid = require("@turf/centroid").default;
@@ -118,7 +120,7 @@ fs.writeFileSync("playgrounds.json", JSON.stringify(playgrounds));
 
 async function createStrapiItem(item) {
 	const response = await axios.post(
-		"https://api.rai-canzler.de/api/playgrounds",
+		`${STRAPI_URL}/api/playgrounds`,
 		{ data: item }
 	);
 	console.log(response.data);
